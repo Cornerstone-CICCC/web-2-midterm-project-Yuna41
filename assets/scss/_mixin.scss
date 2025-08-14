@@ -1,0 +1,50 @@
+@use "sass:meta";
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+// color
+$main-color: #17141F;
+$sub-color: #d9d9d91a;
+$white: #fff;
+$gray: #d9d9d9;
+
+// breakpoint
+$sp: 768px;
+$pc: 769px;
+$tab: 600px;
+
+@mixin mq($breakpoint: pc) {
+  @if meta.type-of($breakpoint) == string {
+    @if $breakpoint == pc {
+      $breakpoint: $pc;
+      @media (min-width: $breakpoint) {
+        @content;
+      }
+    } @else if $breakpoint == sp {
+      $breakpoint: $sp;
+      @media (max-width: $breakpoint) {
+        @content;
+      }
+    } @else if $breakpoint == tab {
+      $breakpoint: $tab;
+      @media (max-width: $breakpoint) {
+        @content;
+      }
+    }
+  }
+}
+
+// font
+$font-roboto: "Roboto", sans-serif;
+
+// inner
+@mixin inner{
+  width: calc(100% - 40px);
+  max-width: 920px;
+  padding: 0 20px;
+  margin: 0 auto;
+  @include mq{
+    width: 100%;
+    padding: 0 30px;
+  }
+}
