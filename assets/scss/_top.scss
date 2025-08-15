@@ -147,3 +147,85 @@ main{
     }
   }
 }
+
+.modal{
+  display: none;
+  &-bg{
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(000,000,000,.8);
+    width: 100vw;
+    height: 100vh;
+  }
+  &-inner{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    background: mixin.$main-color;
+    width: 86vw;
+    height: 76vh;
+    transform: translate(-50%, -50%);
+    border-radius: 20px;
+    overflow: hidden;
+    @include mixin.mq{
+      width: 700px;
+    }
+  }
+  &-content{
+    overflow-y: auto;
+    height: 100%;
+  }
+  &-thumb{
+    height: 32vh;
+    object-fit: cover;
+    @include mixin.mq{
+      height: 40vh;
+    }
+  }
+  &-box{
+    padding: 16px 20px 20px;
+  }
+  &-ttl{
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 6px;
+    @include mixin.mq{
+      font-size: 2.4rem;
+      line-height: 1.2;
+    }
+  }
+  &-time{
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+  &-btn{
+    margin-bottom: 12px;
+    @include mixin.mq{
+      margin-bottom: 16px;
+    }
+    a{
+      display: block;
+      text-align: center;
+      background: mixin.$white;
+      color: mixin.$main-color;
+      font-weight: 600;
+      padding: 12px;
+      border-radius: 10px;
+    }
+  }
+  &-desc{
+    margin-bottom: 12px;
+    @include mixin.mq{
+      margin-bottom: 16px;
+    }
+  }
+  &-video{
+    width: 100%;
+    height: 44vw;
+    background: #444;
+    @include mixin.mq{
+      height: 440px;
+    }
+  }
+}
