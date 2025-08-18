@@ -15,8 +15,13 @@ main{
     overflow-x: auto;
     white-space: nowrap;
     margin-bottom: 14px;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
     @include mixin.mq{
       gap: 8px;
+    }
+    &::-webkit-scrollbar{
+      display: none;
     }
     li{
       background: mixin.$sub-color;
@@ -36,12 +41,19 @@ main{
 .sec{
   &-slide{
     margin-bottom: 40px;
+    overflow: hidden;
+    position: relative;
+    &_list{
+      display: flex;
+      transition: .5s ease-out;
+    }
     &_item{
       height: 62vw;
       max-height: 380px;
       position: relative;
+      width: 100vw;
       @include mixin.mq{
-        max-height: 480px;
+        max-height: 520px;
         cursor: pointer;
       }
       &:before{
@@ -92,11 +104,63 @@ main{
         line-height: 1.3;
       }
     }
+    &_btn{
+      position: absolute;
+      top: 46%;
+      transform: translateY(-50%);
+      &.btn-prev{
+        left: 10px;
+        @include mixin.mq{
+          left: 20px;
+        }
+      }
+      &.btn-next{
+        right: 10px;
+        @include mixin.mq{
+          right: 20px;
+        }
+      }
+      svg{
+        width: 20px;
+        fill: mixin.$white;
+        @include mixin.mq{
+          width: 40px;
+        }
+      }
+    }
+    &_nav{
+      display: flex;
+      gap: 8px;
+      padding: 0 20px;
+      justify-content: center;
+      margin-top: 20px;
+      flex-wrap: wrap;
+      @include mixin.mq{
+        gap: 12px;
+      }
+      li{
+        width: 6px;
+        height: 6px;
+        background: mixin.$gray;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: .3s ease-in-out;
+        @include mixin.mq{
+          width: 8px;
+          height: 8px;
+        }
+        &.active{
+          width: 16px;
+          border-radius: 20px;
+          background: mixin.$white;
+        }
+      }
+    }
   }
 
   &-clm{
     +.sec-clm{
-      margin-top: 26px;
+      margin-top: 20px;
       @include mixin.mq{
         margin-top: 40px; 
       }
@@ -116,40 +180,75 @@ main{
       gap: 10px;
       padding: 0 14px;
       overflow-x: auto;
+      -ms-overflow-style: none;
+      scrollbar-width: none;
       @include mixin.mq{
         gap: 16px;
         padding: 0 100px 
       }
+      &::-webkit-scrollbar{
+        display: none;
+      }
+      &.search-results{
+        flex-wrap: wrap;
+        gap: 24px 12px;
+        @include mixin.mq{
+          gap: 32px 16px;
+        }
+        li{
+          width: calc((100% - 12px) / 2);
+          @include mixin.mq{
+            width: calc((100% - 48px) / 4);
+          }
+        }
+        .sec-clm_thumb{
+          @include mixin.mq(sp){
+            height: 64vw;
+          }
+        }
+      }
     }
     &_item{
-      min-width: 50vw;
+      min-width: 120px;
+      position: relative;
       @include mixin.mq{
-        min-width: 24vw;
+        min-width: 200px;
         cursor: pointer;
       }
     }
     &_thumb{
       width: 100%;
-      height: 34vw;
+      height: 180px;
       object-fit: cover;
       border-radius: 14px;
       margin-bottom: 2px;
       @include mixin.mq{
-        height: 16vw; 
+        height: 300px; 
       }
     }
     &_ttl{
       font-weight: 500;
-      margin-bottom: 2px;
+      margin-bottom: 3px;
+      line-height: 1.3;
     }
     &_time{
       font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      svg{
+        width: 14px;
+        fill: mixin.$light-main-color;
+      }
     }
   }
 }
 
 .modal{
   display: none;
+  &.open{
+    display: block;
+  }
   &-bg{
     position: fixed;
     top: 0;
@@ -157,6 +256,9 @@ main{
     background: rgba(000,000,000,.8);
     width: 100vw;
     height: 100vh;
+    @include mixin.mq{
+      cursor: pointer;
+    }
   }
   &-inner{
     position: fixed;
@@ -180,7 +282,7 @@ main{
     height: 32vh;
     object-fit: cover;
     @include mixin.mq{
-      height: 40vh;
+      height: 42vh;
     }
   }
   &-box{
@@ -198,10 +300,18 @@ main{
   &-time{
     font-size: 1.2rem;
     margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    svg{
+      width: 14px;
+      fill: mixin.$light-main-color;
+    }
   }
   &-btn{
     margin-bottom: 12px;
     @include mixin.mq{
+      width: 200px;
       margin-bottom: 16px;
     }
     a{
