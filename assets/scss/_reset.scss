@@ -48,3 +48,11 @@ input{
   -webkit-appearance: none;
   border-radius: 0;
 }
+
+button{
+  outline: none;
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+}

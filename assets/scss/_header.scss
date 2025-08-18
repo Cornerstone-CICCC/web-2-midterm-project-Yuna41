@@ -1,0 +1,91 @@
+@use 'mixin';
+
+.header{
+  display: flex;
+  padding: 14px;
+  align-items: center;
+  gap: 8px;
+  @include mixin.mq{
+    padding: 20px;
+    gap: 14px;
+  }
+  &-logo{
+    align-content: flex-start;
+    svg{
+      vertical-align: middle;
+      width: 80px;
+      @include mixin.mq{
+        width: 180px;
+      }
+    }
+  }
+  &-search{
+    margin-left: auto;
+    position: relative;
+    &:before{
+      content: "";
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      background: url(../../assets/img/icon-search.svg) no-repeat center center / contain;
+      position: absolute;
+      top: 50%;
+      left: 9px;
+      transform: translateY(-50%);
+      @include mixin.mq{
+        width: 20px;
+        height: 20px;
+        left: 10px;
+      }
+    }
+    .search{
+      &-input{
+        width: clamp(150px, 40vw, 240px);
+        border: 1px solid mixin.$white;
+        border-radius: 20px;
+        padding: 6px 6px 6px 30px;
+        background: mixin.$main-color;
+        font-size: 1.4rem;
+        color: mixin.$white;
+        @include mixin.mq{
+          padding: 7px 10px 7px 38px;
+          font-size: 1.6rem;
+        }
+        &:focus{
+          outline: none;
+        }
+      }
+      &-submit{
+        display: none;
+      }
+    }
+  }
+  &-modeBtn{
+    width: 40px;
+    height: 24px;
+    background: mixin.$white;
+    border-radius: 40px;
+    position: relative;
+    @include mixin.mq{
+      width: 50px;
+      height: 26px;
+      cursor: pointer;
+    }
+    &:before{
+      content: "";
+      display: inline-block;
+      width: 18px;
+      height: 18px;
+      background: mixin.$gray;
+      border-radius: 50%;
+      position: absolute;
+      top: 3px;
+      left: 4px;
+      transition: .3s ease;
+      @include mixin.mq{
+        top: 4px;
+        left: 7px;
+      }
+    }
+  }
+}
