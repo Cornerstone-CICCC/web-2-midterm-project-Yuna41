@@ -1,0 +1,13 @@
+@use './mixin';
+
+.footer{
+  border-top: 1px solid mixin.$sub-color;
+  padding: 14px;
+  text-align: center;
+  small{
+    font-size: 1.2rem;
+    @include mixin.mq{
+      font-size: 1.4rem;   
+    }
+  }
+}

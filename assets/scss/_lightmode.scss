@@ -1,0 +1,45 @@
+@use 'mixin';
+
+.mode-light{
+  background: mixin.$light-main-color;
+  .header{
+    &-logo{
+      .logo-bg{
+        fill: mixin.$light-main-color;
+      }
+    }
+    &-modeBtn{
+      background: mixin.$main-color;
+      &:before{
+        transform: translateX(14px);
+        @include mixin.mq{
+          transform: translateX(18px);
+        }
+      }
+    }
+    &-search{
+      input{
+        background: mixin.$light-main-color;
+      }
+    }
+  }
+  .sec{
+    &-clm{
+      &_time{
+        svg{
+          fill: mixin.$key-color;
+        }
+      }
+    }
+  }
+  .modal{
+    &-inner{
+      background: mixin.$light-main-color;
+    }
+    &-time{
+      svg{
+        fill: mixin.$key-color;
+      }
+    }
+  }
+}

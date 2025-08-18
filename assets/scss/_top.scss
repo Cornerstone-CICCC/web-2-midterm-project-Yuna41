@@ -1,0 +1,341 @@
+@use './mixin';
+
+main{
+  margin-bottom: 60px;
+  @include mixin.mq{
+    margin-bottom: 110px;
+  }
+}
+
+.nav{
+  &-category{
+    display: flex;
+    gap: 6px;
+    padding: 0 14px;
+    overflow-x: auto;
+    white-space: nowrap;
+    margin-bottom: 14px;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    @include mixin.mq{
+      gap: 8px;
+    }
+    &::-webkit-scrollbar{
+      display: none;
+    }
+    li{
+      background: mixin.$sub-color;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 1.2rem;
+      font-weight: 500;
+      @include mixin.mq{
+        padding: 8px 16px;
+        font-size: 1.4rem;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.sec{
+  &-slide{
+    margin-bottom: 40px;
+    overflow: hidden;
+    position: relative;
+    &_list{
+      display: flex;
+      transition: .5s ease-out;
+    }
+    &_item{
+      height: 62vw;
+      max-height: 380px;
+      position: relative;
+      width: 100vw;
+      @include mixin.mq{
+        max-height: 520px;
+        cursor: pointer;
+      }
+      &:before{
+        content: "";
+        display: inline-block;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, mixin.$main-color, rgba(255,255,255,0));
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+    }
+    &_thumb{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    &_txt{
+      width: calc(100% - 28px);
+      position: absolute;
+      bottom: 14px;
+      left: 14px;
+      @include mixin.mq{
+        width: 56vw;
+        bottom: 50px;
+        left: 100px;
+      }
+    }
+    &_ttl{
+      font-size: 3rem;
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 8px;
+      @include mixin.mq{
+        font-size: 6.4rem;
+        line-height: 1;
+        margin-bottom: 14px;
+      }
+    }
+    &_desc{
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      @include mixin.mq{
+        font-size: 1.8rem;
+        line-height: 1.3;
+      }
+    }
+    &_btn{
+      position: absolute;
+      top: 46%;
+      transform: translateY(-50%);
+      &.btn-prev{
+        left: 10px;
+        @include mixin.mq{
+          left: 20px;
+        }
+      }
+      &.btn-next{
+        right: 10px;
+        @include mixin.mq{
+          right: 20px;
+        }
+      }
+      svg{
+        width: 20px;
+        fill: mixin.$white;
+        @include mixin.mq{
+          width: 40px;
+        }
+      }
+    }
+    &_nav{
+      display: flex;
+      gap: 8px;
+      padding: 0 20px;
+      justify-content: center;
+      margin-top: 20px;
+      flex-wrap: wrap;
+      @include mixin.mq{
+        gap: 12px;
+      }
+      li{
+        width: 6px;
+        height: 6px;
+        background: mixin.$gray;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: .3s ease-in-out;
+        @include mixin.mq{
+          width: 8px;
+          height: 8px;
+        }
+        &.active{
+          width: 16px;
+          border-radius: 20px;
+          background: mixin.$white;
+        }
+      }
+    }
+  }
+
+  &-clm{
+    +.sec-clm{
+      margin-top: 20px;
+      @include mixin.mq{
+        margin-top: 40px; 
+      }
+    }
+    &_category{
+      padding: 0 14px;
+      margin-bottom: 6px;
+      font-size: 2rem;
+      font-weight: 600;
+      @include mixin.mq{
+        padding: 0 100px;
+        font-size: 2.6rem;
+      }
+    }
+    &_list{
+      display: flex;
+      gap: 10px;
+      padding: 0 14px;
+      overflow-x: auto;
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+      @include mixin.mq{
+        gap: 16px;
+        padding: 0 100px 
+      }
+      &::-webkit-scrollbar{
+        display: none;
+      }
+      &.search-results{
+        flex-wrap: wrap;
+        gap: 24px 12px;
+        @include mixin.mq{
+          gap: 32px 16px;
+        }
+        li{
+          width: calc((100% - 12px) / 2);
+          @include mixin.mq{
+            width: calc((100% - 48px) / 4);
+          }
+        }
+        .sec-clm_thumb{
+          @include mixin.mq(sp){
+            height: 64vw;
+          }
+        }
+      }
+    }
+    &_item{
+      min-width: 120px;
+      position: relative;
+      @include mixin.mq{
+        min-width: 200px;
+        cursor: pointer;
+      }
+    }
+    &_thumb{
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 14px;
+      margin-bottom: 2px;
+      @include mixin.mq{
+        height: 300px; 
+      }
+    }
+    &_ttl{
+      font-weight: 500;
+      margin-bottom: 3px;
+      line-height: 1.3;
+    }
+    &_time{
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      svg{
+        width: 14px;
+        fill: mixin.$light-main-color;
+      }
+    }
+  }
+}
+
+.modal{
+  display: none;
+  &.open{
+    display: block;
+  }
+  &-bg{
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(000,000,000,.8);
+    width: 100vw;
+    height: 100vh;
+    @include mixin.mq{
+      cursor: pointer;
+    }
+  }
+  &-inner{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    background: mixin.$main-color;
+    width: 86vw;
+    height: 76vh;
+    transform: translate(-50%, -50%);
+    border-radius: 20px;
+    overflow: hidden;
+    @include mixin.mq{
+      width: 700px;
+    }
+  }
+  &-content{
+    overflow-y: auto;
+    height: 100%;
+  }
+  &-thumb{
+    height: 32vh;
+    object-fit: cover;
+    @include mixin.mq{
+      height: 42vh;
+    }
+  }
+  &-box{
+    padding: 16px 20px 20px;
+  }
+  &-ttl{
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 6px;
+    @include mixin.mq{
+      font-size: 2.4rem;
+      line-height: 1.2;
+    }
+  }
+  &-time{
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    svg{
+      width: 14px;
+      fill: mixin.$light-main-color;
+    }
+  }
+  &-btn{
+    margin-bottom: 12px;
+    @include mixin.mq{
+      width: 200px;
+      margin-bottom: 16px;
+    }
+    a{
+      display: block;
+      text-align: center;
+      background: mixin.$white;
+      color: mixin.$main-color;
+      font-weight: 600;
+      padding: 12px;
+      border-radius: 10px;
+    }
+  }
+  &-desc{
+    margin-bottom: 12px;
+    @include mixin.mq{
+      margin-bottom: 16px;
+    }
+  }
+  &-video{
+    width: 100%;
+    height: 44vw;
+    background: #444;
+    @include mixin.mq{
+      height: 440px;
+    }
+  }
+}
